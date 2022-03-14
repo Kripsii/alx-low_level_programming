@@ -1,1 +1,1 @@
-compiles a C file and creates an executable named cisfun
+program that prints exactly as stated
