@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio>
 /**
  * _abs - value absolute
  * @n: The int to print
