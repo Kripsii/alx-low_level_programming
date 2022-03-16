@@ -7,10 +7,9 @@
  * -1 if the number is a negative integer.
  */
 int print_sign(int n)
-{
-	char pos = '+';
+{	char pos = '+';
 	char zero = '0';
-	char neg = '-'
+	char neg = '-';
 
 	if (n > 0)
 {
