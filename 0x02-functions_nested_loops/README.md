@@ -1,1 +1,1 @@
-a function that prints the last digit of a number
+ prints every minute of the day of Jack Bauer
