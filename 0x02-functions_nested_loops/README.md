@@ -1,1 +1,1 @@
- prints every minute of the day of Jack Bauer
+a function that prints the 9 times table, starting with 0
