@@ -6,6 +6,7 @@
  * @n: an input integer.
  * Return: a pointer to resulting string dest.
  */
+
 char *_strncat(char *dest, char *src, int n)
 {
 	int i = 0;
@@ -22,6 +23,7 @@ char *_strncat(char *dest, char *src, int n)
 		i++;
 		j++;
 	}
-
+	
+	dest[i] = '\0';
 	return (dest);
 }
