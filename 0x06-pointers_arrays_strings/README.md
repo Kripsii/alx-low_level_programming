@@ -1,1 +1,1 @@
- a function that prints an integer
+magic code
