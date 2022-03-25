@@ -2,32 +2,30 @@
 
 /**
  * rot13 -  a function that encodes a string using rot13.
- * @s: An input string to encode using rot13
+ * @a: An input string to encode using rot13
  * Return: An encode string
  */
-char *rot13(char *s)
+char *rot13(char *a)
 {
+	int j;
 	int i = 0;
+	char init[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char fin[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	while (s[i] != '\0')
+	while (*(a + i))
 	{
-		while ((s[i] >= 'a' && s[i] <= 'z') ||
-				(s[i] >= 'A' && s[i] <= 'Z'))
+		for (j = 0; j <= 52; j++)
 		{
+			if (*(a + i) == init[j])
+			{
+				*(a + i) = fin[j];
+				break;
 
-			if ((s[i] >= 'a' && s[i] <= 'm') ||
-					(s[i] >= 'A' && s[i] <= 'M'))
-				s[i] += 13;
-			else
-				s[i] -= 13;
+			}
 
-			i++;
 		}
 
 		i++;
-
 	}
-
-	return (s);
-
+	return (a);
 }
