@@ -26,13 +26,14 @@ int check_int(int square, int x)
  */
 int _sqrt_recursion(int n)
 {
-	int i = 0;
+	int start;
+
+	start = 1;
 
 	if (n < 0)
 		return (-1);
-
-	if (n == 1)
+	else if (n == 1)
 		return (1);
-
-	return (find_sqrt(n, i));
+	else
+		return (check_int(n, start));
 }
