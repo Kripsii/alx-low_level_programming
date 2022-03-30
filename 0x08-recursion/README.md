@@ -1,1 +1,1 @@
-returns the value of x raised to power of y
+returns square root of a number
