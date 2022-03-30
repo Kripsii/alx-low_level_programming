@@ -1,1 +1,1 @@
-a function that returns a factorial of a number
+returns the value of x raised to power of y
