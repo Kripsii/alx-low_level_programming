@@ -9,14 +9,15 @@
  */
 int main(int argc, char *argv[])
 {
-	if (argc <= 2 || argc > 3)
+	long int i;
+
+	if (argc != 3)
 	{
 		printf("Error\n");
 		return (0);
 	}
-	else
-	{
-		printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
-		return (1);
-	}
+	i = atoi(argv[1]) * atoi(argv[2]);
+	printf("%ld\n", i);
+
+	return (0);
 }
