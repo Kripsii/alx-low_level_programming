@@ -1,1 +1,1 @@
-a function that frees a list_t list.
+A function that prints a given string in Lists_t
