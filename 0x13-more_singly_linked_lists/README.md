@@ -1,1 +1,1 @@
-A function to free list
+a function that frees a listint_t list.
