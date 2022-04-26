@@ -1,1 +1,1 @@
-0. Print list in linked lists
+1. List length in linked lists
