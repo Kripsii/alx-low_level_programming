@@ -1,1 +1,1 @@
-3. Add node at the end
+A function to free list
