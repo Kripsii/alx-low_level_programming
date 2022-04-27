@@ -3,7 +3,7 @@ i
 /**
  * free_listint_safe - A function that frees a list
  * @h: pointer list_in structure
- * Return: size of freed list
+ * Return: size of freed
  */
 size_t free_listint_safe(listint_t **h)
 {
