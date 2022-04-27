@@ -1,1 +1,1 @@
-a function that inserts a new node to a given position
+ a function that reverses a listint_t linked list.
