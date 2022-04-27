@@ -1,1 +1,1 @@
- Print (safe version)- a function that prints a listint_t linked list.
+13. Free (safe version)
