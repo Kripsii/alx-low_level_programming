@@ -1,1 +1,1 @@
- a function that reverses a listint_t linked list.
+ Print (safe version)- a function that prints a listint_t linked list.
