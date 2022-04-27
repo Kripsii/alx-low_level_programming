@@ -1,1 +1,1 @@
-a function that returns the sum of all the data (n) of a listint_t linked list.
+a function that inserts a new node to a given position
