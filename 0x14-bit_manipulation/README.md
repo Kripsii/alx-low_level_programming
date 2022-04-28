@@ -1,1 +1,1 @@
-Get value of a bit at agiven index
+set value of bit at given point to 1
