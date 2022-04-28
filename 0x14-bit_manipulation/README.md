@@ -1,1 +1,1 @@
-set value of bit at given point to 1
+Setting the value of a bit at a given index to 0
