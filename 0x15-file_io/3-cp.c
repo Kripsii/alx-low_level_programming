@@ -1,88 +1,51 @@
 #include "main.h"
+#include <stdio.h>
+
+#define MAXSIZE 1204
+#define SE STDERR_FILENO
 
 /**
- * make_buff - Creates a buffer and allocates space.
- *
- * @file: File to be copied to
- * Return: Pointer to allocated memory.
+ * main - create the copy bash script
+ * @ac: argument count
+ * @av: arguments as strings
+ * Return: 0
  */
-char *make_buff(char *file)
+int main(int ac, char *av[])
 {
-	char *buf;
+	int input_fd, output_fd, istatus, ostatus;
+	char buf[MAXSIZE];
+	mode_t mode;
 
-	buf = malloc(sizeof(char) * 1024);
-
-	if (buf == NULL)
-	{
-		dprintf(STDERR_FILENO,
-				"Error: Can't write to %s\n", file);
-		exit(99);
-	}
-
-	return (buf);
-}
-
-/**
- * close_fd - Closes file descriptors
- * @fd: File descriptor to be closed
- */
-void close_fd(int fd)
-{
-	int c;
-
-	c = close(fd);
-
-	if (c == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(100);
-	}
-}
-
-/**
- * main - Copies contents of a file to another file
- * @argc: The number of arguments received by program.
- * @argv: Array of pointers to arguments
- * Return: 0 on success
- */
-int main(int argc, char *argv[])
-{
-	int from, to, r, w;
-	char *buffy;
-
-	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
-	buffy = make_buff(argv[2]);
-	from = open(argv[1], O_RDONLY);
-	r = read(from, buffy, 1024);
-	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+	if (ac != 3)
+		dprintf(SE, "Usage: cp file_from file_to\n"), exit(97);
+	input_fd = open(av[1], O_RDONLY);
+	if (input_fd == -1)
+		dprintf(SE, "Error: Can't read from file %s\n", av[1]), exit(98);
+	output_fd = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, mode);
+	if (output_fd == -1)
+		dprintf(SE, "Error: Can't write to %s\n", av[2]), exit(99);
 
 	do {
-		if (from == -1 || r == -1)
+		istatus = read(input_fd, buf, MAXSIZE);
+		if (istatus == -1)
 		{
-			dprintf(STDERR_FILENO,
-					"Error: Can't read from file %s\n", argv[1]);
-			free(buffy);
+			dprintf(SE, "Error: Can't read from file %s\n", av[1]);
 			exit(98);
 		}
-		w = write(to, buffy, r);
-		if (to == -1 || w == -1)
+		if (istatus > 0)
 		{
-			dprintf(STDERR_FILENO,
-					"Error: Can't write to %s\n", argv[2]);
-			free(buffy);
-			exit(99);
+			ostatus = write(output_fd, buf, (ssize_t) istatus);
+			if (ostatus == -1)
+				dprintf(SE, "Error: Can't write to %s\n", av[2]), exit(99);
 		}
-		r = read(from, buffy, 1024);
-		to = open(argv[2], O_WRONLY | O_APPEND);
-	} while (r > 0)
+	} while (istatus > 0);
 
-	free(buffy);
-	close_fd(from);
-	close_fd(to);
-
+	istatus = close(input_fd);
+	if (istatus == -1)
+		dprintf(SE, "Error: Can't close fd %d\n", input_fd), exit(100);
+	ostatus = close(output_fd);
+	if (ostatus == -1)
+		dprintf(SE, "Error: Can't close fd %d\n", output_fd), exit(100);
 	return (0);
 }
