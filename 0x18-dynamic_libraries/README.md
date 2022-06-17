@@ -1,1 +1,1 @@
-a script that creates a dynamic library
+C functions on Python
