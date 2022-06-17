@@ -1,1 +1,1 @@
- dynamic library libdynamic.so containing all the functions listed
+a script that creates a dynamic library
