@@ -11,9 +11,9 @@ def island_perimeter(grid):
                 if x == 0 or grid[y][x - 1] == 0:
                     perim += 1
                 if x == len(row) - 1 or grid[y][x + 1] == 0:
-                        perim += 1
+                    perim += 1
                 if y == 0 or grid[y - 1][x] == 0:
-                            perim += 1
+                    perim += 1
                 if y == len(grid) - 1 or grid[y + 1][x] == 0:
-                                perim += 1
+                    perim += 1
     return perim
